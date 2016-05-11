@@ -1,0 +1,2 @@
+module RamenTypesHelper
+end
