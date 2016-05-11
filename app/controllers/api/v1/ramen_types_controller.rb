@@ -1,4 +1,4 @@
-class RamenTypesController < ApplicationController
+class Api::V1::RamenTypesController < ApplicationController
   def index
     @ramen_types = RamenType.all
   end
@@ -27,5 +27,4 @@ class RamenTypesController < ApplicationController
 
     render :show
   end
-
 end
