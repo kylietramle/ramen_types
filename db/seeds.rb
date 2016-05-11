@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+RamenType.create!([
+  {soup_base: "soy sauce", flavor: "tangy", broth_color: "clear brown", other_ingredients: "meat and vegetables", name: "Shoyu"},
+  {soup_base: "pork bone", flavor: "milk cream", broth_color: "cloudy white", other_ingredients: "ginger", name: "Tonkotsu"},
+  {soup_base: "salt, chicken, pork", flavor: "very salty", broth_color: "clear yellow", other_ingredients: "seaweed", name: "Shio"},
+  {soup_base: "miso", flavor: "nutty sweet", broth_color: "dark orange", other_ingredients: "none", name: "Miso"},
+  {soup_base: "pork and fish", flavor: "robust", broth_color: "dark orange", other_ingredients: "flat noodles on the side", name: "Tsukemen"}
+])

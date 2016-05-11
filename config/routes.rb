@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get '/ramen_types', to: 'ramen_types#index'
   get '/ramen_types/:id', to: 'ramen_types#show'
+  post '/ramen_types', to: 'ramen_types#create'
+  patch '/ramen_types/:id', to: 'ramen_types#update'
+  delete '/ramen_types/:id', to: 'ramen_types#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
