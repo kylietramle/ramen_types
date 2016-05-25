@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/' => 'ramen_types#index'
+
   namespace :api do
     namespace :v1 do
       get '/ramen_types', to: 'ramen_types#index'

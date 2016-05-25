@@ -1,0 +1,18 @@
+<div ng-app="app">
+  <div ng-controller="ramenCtrl" ng-init="setup()">
+   <p>
+     Name: <input ng-model="name">
+     Soup base: <input ng-model="soupBase">
+     <button ng-click="addRamenType(name, soupBase, flavor, brothColor, otherIngredients)">Add Ramen Type</button>
+   </p>
+
+    <div ng-repeat="ramen_type in ramen_types">   <!-- each loop equivalent to display data -->
+      <p>{{ramen_type.name}}</p>
+      <p>{{ramen_type.soup_base}}</p>
+      <p>{{ramen_type.flavor}}</p>
+      <p>{{ramen_type.broth_color}}</p>
+      <p>{{ramen_type.other_ingredients}}</p>
+      <p></p>
+    </div>
+  </div> 
+</div>
