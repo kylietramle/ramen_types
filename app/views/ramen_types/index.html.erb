@@ -1,18 +1,41 @@
 <div ng-app="app">
   <div ng-controller="ramenCtrl" ng-init="setup()">
+  <ul>
+    <li ng-repeat="error in errors">{{ error }}</li>
+  </ul>
    <p>
      Name: <input ng-model="name">
      Soup base: <input ng-model="soupBase">
+     Flavor:  <input ng-model="flavor">
+     Broth Color: <input ng-model="brothColor">
+     Other Ingredients: <input ng-model="otherIngredients">
      <button ng-click="addRamenType(name, soupBase, flavor, brothColor, otherIngredients)">Add Ramen Type</button>
    </p>
-
-    <div ng-repeat="ramen_type in ramen_types">   <!-- each loop equivalent to display data -->
-      <p>{{ramen_type.name}}</p>
-      <p>{{ramen_type.soup_base}}</p>
-      <p>{{ramen_type.flavor}}</p>
-      <p>{{ramen_type.broth_color}}</p>
-      <p>{{ramen_type.other_ingredients}}</p>
-      <p></p>
+    
+    <label>Filter by Name:</label>
+    <input ng-model="nameFilter">
+    <label>Filter by Flavor:</label>
+    <input ng-model="flavorFilter">
+    <!-- each loop equivalent to display data -->
+    <div ng-repeat="ramen_type in ramen_types | filter: {name: nameFilter, flavor: flavorFilter}">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Soup Base</th>
+        <th>Flavor</th>
+        <th>Broth Color</th>
+        <th>Other Ingredients</th>
+        <th>Delete Type</th> 
+      </tr>
+    <tr>
+      <td>{{ramen_type.name}}</td>
+      <td>{{ramen_type.soup_base}}</td>
+      <td>{{ramen_type.flavor}}</td>
+      <td>{{ramen_type.broth_color}}</td>
+      <td>{{ramen_type.other_ingredients}}</td>
+      <td><button ng-click="deleteRamenType(ramen_type)">Delete Me!</button></td>
+    </tr>
+      </table>
     </div>
   </div> 
 </div>
