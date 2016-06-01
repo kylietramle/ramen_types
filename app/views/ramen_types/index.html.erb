@@ -12,12 +12,23 @@
      <button ng-click="addRamenType(name, soupBase, flavor, brothColor, otherIngredients)">Add Ramen Type</button>
    </p>
     
+    <!-- Filter -->
     <label>Filter by Name:</label>
-    <input ng-model="nameFilter">
-    <label>Filter by Flavor:</label>
-    <input ng-model="flavorFilter">
+    <input ng-model="nameFilter" list="names">
+    <div>
+      <button ng-click="toggleOrder('name')">Order  by Name</button>
+      <button ng-click="toggleOrder('soupBase')">Order  by Soup Base</button>
+    </div>
+    
+    <!-- Autocomplete -->
+    <datalist id="names">
+      <option ng-repeat="ramen_type in ramen_types">{{ramen_type.name}}</option>
+    </datalist>
+
     <!-- each loop equivalent to display data -->
-    <div ng-repeat="ramen_type in ramen_types | filter: {name: nameFilter, flavor: flavorFilter}">
+    <div ng-repeat="ramen_type in ramen_types | filter: {name: nameFilter} | orderBy: orderAttribute:descending"> 
+    <!-- false: ascending; true: descending -->
+    <!-- orderAttribute:false by default -->
     <table>
       <tr>
         <th>Name</th>

@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  angular.module("app").controller("ramenCtrl", function($scope, $http) { // http make web requests
+  angular.module("app").controller("ramenCtrl", ['$scope', '$http', function($scope, $http) { // http make web requests
       
     $scope.setup = function() {
       $http.get("api/v1/ramen_types.json").then(function(response) { //talk to own app
@@ -25,12 +25,21 @@
     $scope.deleteRamenType = function(ramenType) {
       $http.delete("api/v1/ramen_types/" + ramenType.id + ".json").then(function(response) {
         // delete front-end to match with the request from back end
-
-        var index = $scope.ramen_types.indexOf(ramenType) // MAKE CHANGES
+        var index = $scope.ramen_types.indexOf(ramenType)
         $scope.ramen_types.splice(index, 1);
       });
     }
 
+    $scope.toggleOrder = function (attribute) {
+      if (attribute != $scope.orderAttribute) { // 1st: if name is not ($scope.orderAttribute = false)
+        $scope.descending = false;              // set $scope.orderAttribute to false if not aka ascend it
+      } else {
+        $scope.descending = !$scope.descending;
+      }
+      $scope.orderAttribute = attribute;
+    }
+
     window.$scope = $scope; // attach to DOM for debugging
-  });
+  }]);
+  "ramenCtrl".$inject = ['$scope', '$http'];
 })();
